@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio | Diseñador & Desarrollador</title>
+    <style>
+        /* VARIABLES DE COLOR */
+        :root {
+            --bg-principal: #0b0f19;
+            --texto-principal: #ffffff;
+            --texto-mutado: #cbd5e1;
+            --acento: #34d399;
+            /* Verde aurora */
+            --acento-secundario: #22d3ee;
+            /* Celeste brillante */
+            --fuente: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* ESTILOS GLOBALES Y IMAGEN DE FONDO REAL */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--fuente);
+            color: var(--texto-principal);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+
+            /* Carga de la imagen de aurora real fija de fondo */
+            background-image: linear-gradient(rgba(11, 15, 25, 0.4), rgba(11, 15, 25, 0.4)), url(imagenes/fondo_aurora.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* Mantiene el fondo quieto al hacer scroll */
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 7rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* EFECTO CRISTAL (GLASSMORPHISM) */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            /* Fondo semi-transparente oscuro */
+            backdrop-filter: blur(12px) saturate(140%);
+            -webkit-backdrop-filter: blur(12px) saturate(140%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+        }
+
+        /* BARRA DE NAVEGACIÓN ESTILO FLOTANTE */
+        header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 1100px;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--acento-secundario);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--acento);
+        }
+
+        /* SECCIÓN HERO (INICIO) */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            font-weight: 800;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 span {
+            background: linear-gradient(to right, var(--acento), var(--acento-secundario));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--texto-principal);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--acento), var(--acento-secundario));
+            color: #000;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(34, 211, 238, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(34, 211, 238, 0.6);
+        }
+
+        /* SECCIÓN SOBRE MÍ */
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-wrapper {
+            padding: 2.5rem;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 768px) {
+            .about-content {
+                grid-template-columns: 1.5fr 1fr;
+            }
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--acento-secundario);
+        }
+
+        /* SECCIÓN PROYECTOS */
+        .grid-proyectos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .tarjeta-proyecto {
+            overflow: hidden;
+            transition: transform 0.3s, border 0.3s;
+        }
+
+        .tarjeta-proyecto:hover {
+            transform: translateY(-5px);
+            border-color: var(--acento);
+        }
+
+        .imagen-placeholder {
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+        }
+
+        .info-proyecto {
+            padding: 1.5rem;
+        }
+
+        .info-proyecto h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .info-proyecto p {
+            color: var(--texto-mutado);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .link-proyecto {
+            color: var(--acento);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* SECCIÓN CONTACTO */
+        .contacto {
+            text-align: center;
+        }
+
+        .contacto-card {
+            padding: 4rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .contacto p {
+            margin-bottom: 2rem;
+            color: var(--texto-mutado);
+            font-size: 1.1rem;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            margin-top: 4rem;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(11, 15, 25, 0.8);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVEGACIÓN FLOTANTE -->
+    <header class="glass-card">
+        <div class="nav-container">
+            <a href="#" class="logo">TuNombre<span>.dev</span></a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- INICIO (HERO) -->
+    <section id="inicio" class="hero">
+        <p
+            style="color: var(--acento); margin-bottom: 0.8rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;">
+            Hola, mi nombre es</p>
+        <h1>Tu Nombre <span>Apellido.</span></h1>
+        <p>Diseñador & Desarrollador Web enfocado en crear interfaces inmersivas, limpias y de alto impacto visual.</p>
+        <a href="#proyectos" class="btn">Ver mi trabajo</a>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section id="sobre-mi">
+        <h2>Sobre mí</h2>
+        <div class="about-wrapper glass-card">
+            <div class="about-content">
+                <div>
+                    <p>Me dedico a transformar ideas abstractas en productos digitales funcionales y visualmente
+                        atractivos. Mi objetivo es que cada sitio web no solo sea una herramienta útil, sino una
+                        experiencia memorable para el usuario.</p>
+                    <br>
+                    <p>Me apasiona combinar la rigidez técnica del código con la fluidez del arte visual, buscando
+                        siempre el equilibrio perfecto entre rendimiento y estética.</p>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 1rem; font-size: 1.1rem; color: rgba(255,255,255,0.8);">Tecnologías y
+                        Skills</h3>
+                    <div class="skills">
+                        <span class="skill-tag">HTML5 / CSS3</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React.js</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Git / GitHub</span>
+                        <span class="skill-tag">Diseño Web</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROYECTOS -->
+    <section id="proyectos">
+        <h2>Mis Proyectos</h2>
+        <div class="grid-proyectos">
+            <!-- Proyecto 1 -->
+            <div class="tarjeta-proyecto glass-card">
+                <div class="imagen-placeholder">Proyecto Alpha</div>
+                <div class="info-proyecto">
+                    <h3>Plataforma E-commerce</h3>
+                    <p>Diseño de interfaz minimalista enfocado en la conversión y la experiencia de usuario fluida.</p>
+                    <a href="#" class="link-proyecto">Ver demo →</a>
+                </div>
+            </div>
+            <!-- Proyecto 2 -->
+            <div class="tarjeta-proyecto glass-card">
+                <div class="imagen-placeholder">Proyecto Beta</div>
+                <div class="info-proyecto">
+                    <h3>Dashboard de Analíticas</h3>
+                    <p>Panel de control interactivo con visualización de datos complejos en tiempo real.</p>
+                    <a href="#" class="link-proyecto">Ver demo →</a>
+                </div>
+            </div>
+            <!-- Proyecto 3 -->
+            <div class="tarjeta-proyecto glass-card">
+                <div class="imagen-placeholder">Proyecto Gamma</div>
+                <div class="info-proyecto">
+                    <h3>Aplicación Móvil Web</h3>
+                    <p>Desarrollo responsive con enfoque "Mobile-First" y transiciones optimizadas.</p>
+                    <a href="#" class="link-proyecto">Ver demo →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="contacto">
+        <div class="contacto-card glass-card">
+            <h2>¿Creamos algo juntos?</h2>
+            <p>Estoy siempre abierto a escuchar nuevas propuestas, colaborar en proyectos innovadores o simplemente
+                conversar sobre diseño y código.</p>
+            <a href="mailto:tu-correo@email.com" class="btn">Hablemos</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Tu Nombre. Diseñado bajo el cielo estelar.</p>
+    </footer>
+
+</body>
+
+</html>

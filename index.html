@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8"> <!-- especifica la codificación de caracteres -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Portafolio</title>
+    <link rel="stylesheet" href="css/estilos.css"> <!-- enlace al archivo de estilos CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <header class="menu-flotante">
+        <a href="index.html" class="logo">
+            Marcos<span>.dev</span>
+        </a>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre mí</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <p class="saludo">Hola, mi nombre es</p>
+        <h1>Marcos <span>San Martín</span> </h1>
+        <p class="descripcion">
+            Estudiante de Ingeniería en Informática apasionado por la programación,
+            el desarrollo de software y la implementación de Inteligencia Artificial.
+        </p>
+        <a href="#proyectos" class="boton">Ver mis proyectos destacados</a>
+    </section>
+
+    <section id="sobre-mi" class="sobre-mi">
+        <h2>Sobre mí</h2>
+        <div class="about-card">
+            <div class="about-foto">
+                <img class="foto-perfil" src="imagenes/ftperfil.png" alt="Foto de mi">
+            </div>
+
+            <div class="about-texto">
+                <p>
+                    Soy estudiante de Ingeniería en Informática, interesado en la programación,
+                    el desarrollo de software y la implementación de Inteligencia Artificial.
+                </p>
+                <p>
+                    Durante mi formación he desarrollado distintos proyectos que me han permitido
+                    trabajar con desarrollo web, aplicaciones, bases de datos y procesamiento de datos.
+                </p>
+                <h3>Tecnologías</h3>
+                <div class="skills">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">Kotlin</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">HTML</span>
+                    <span class="skill-tag">CSS</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">Git/GitHub</span>
+                    <span class="skill-tag">Android Studio</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="proyectos" class="proyectos_home"> <!-- sección de proyectos -->
+        <h2>mis proyectos destacados</h2>
+        <div class="grid_proyectos">
+            <article class="tarjeta_proyecto">
+                <div class="info_proyecto">
+                    <h3>EcoMarket</h3>
+                    <p>Proyecto de gestionamiento de productos ecológicos desarrollado en Python y Django.</p>
+
+                    <div class="proyecto_tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Django</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                    </div>
+
+                    <div class="acciones_proyecto">
+                        <a href="proyecto1.html" class="link_proyecto">Ver proyecto →</a>
+
+                        <a href="https://github.com/markitox777/EcoMarket" class="link_github" target="_blank"><i
+                                class="fa-brands fa-github"></i> Ver en
+                            GitHub→</a>
+                    </div>
+
+
+                </div>
+            </article>
+
+            <article class="tarjeta_proyecto">
+                <div class="info_proyecto">
+                    <h3>Pipeline de Procesamiento de Datos</h3>
+                    <p>
+                        Pipeline desarrollado para automatizar procesos de limpieza,
+                        transformación y validación de datos utilizando Python.
+                    </p>
+
+                    <div class="proyecto_tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">NumPy</span>
+                        <span class="tag">scikit-learn</span>
+                        <span class="tag">Docker</span>
+                    </div>
+
+                    <div class="acciones_proyecto">
+                        <a href="proyecto2.html" class="link_proyecto">Ver proyecto →</a>
+
+                        <a href="https://github.com/markitox777/Pipeline-datos" class="link_github" target="_blank"><i
+                                class="fa-brands fa-github"></i> Ver
+                            en GitHub→</a>
+                    </div>
+
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+        <div class="contacto_card">
+            <h2>Contacto</h2>
+            <p>
+                Si deseas comunicarte conmigo por una oportunidad laboral,
+                colaboración o proyecto, puedes encontrarme aquí:
+            </p>
+            <div class="contacto_links">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=markitoskids@gmail.com&su=Contacto&%20desde%20tu%20portafolio"
+                    target="_blank">
+                    <i class="fa-solid fa-envelope"></i>
+                    Correo
+                </a>
+                <a href="https://github.com/markitox777" target="_blank">
+                    <i class="fa-brands fa-github"></i>
+                    GitHub
+                </a>
+                <a href="https://wa.me/56986694287?text=Hola%20Marcos,%20vi%20tu%20portafolio%20y%20me%20gustaría%20contactarte."
+                    target="_blank"><i class="fa-brands fa-whatsapp"></i>
+                    WhatsApp
+                </a>
+            </div>
+        </div>
+        </div>
+    </section>
+</body>
+
+</html>
